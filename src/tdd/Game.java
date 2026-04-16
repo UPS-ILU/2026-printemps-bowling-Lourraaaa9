@@ -1,48 +1,48 @@
 package tdd;
 
 public class Game {
-    private int[] rolls = new int[21];
-    private int currentRoll = 0;
+	private int[] lancers = new int[21];
+	private int lancer = 0;
 
-    public void roll(int pins) {
-        rolls[currentRoll++] = pins;
-    }
+	public void roll(int nbQuilles) {
+		lancers[lancer++] = nbQuilles;
+	}
 
-    public int score() {
-        int score = 0;
-        int frameIndex = 0;
-        for (int frame = 0; frame < 10; frame++) {
-            if (isStrike(frameIndex)) {
-                score += 10 + strikeBonus(frameIndex);
-                frameIndex++;
-            } else if (isSpare(frameIndex)) {
-                score += 10 + spareBonus(frameIndex);
-                frameIndex += 2;
-            } else {
-                score += sumOfPinsInFrame(frameIndex);
-                frameIndex += 2;
-            }
-        }
-        return score;
-    }
+	public int score() {
+		int score = 0;
+		int indexlancer = 0;
+		for (int frame = 0; frame < 10; frame++) {
+			if (isStrike(indexlancer)) {
+				score += 10 + strikeBonus(indexlancer);
+				indexlancer++;
+			} else if (isSpare(indexlancer)) {
+				score += 10 + spareBonus(indexlancer);
+				indexlancer += 2;
+			} else {
+				score += sumOfPinsInFrame(indexlancer);
+				indexlancer += 2;
+			}
+		}
+		return score;
+	}
 
-    private boolean isStrike(int frameIndex) {
-        return rolls[frameIndex] == 10;
-    }
+	private boolean isStrike(int indexlancer) {
+		return lancers[indexlancer] == 10;
+	}
 
-    private boolean isSpare(int frameIndex) {
-        return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
-    }
+	private boolean isSpare(int indexlancer) {
+		return lancers[indexlancer] + lancers[indexlancer + 1] == 10;
+	}
 
-    private int strikeBonus(int frameIndex) {
-        return rolls[frameIndex + 1] + rolls[frameIndex + 2];
-    }
+	private int strikeBonus(int indexlancer) {
+		return lancers[indexlancer + 1] + lancers[indexlancer + 2];
+	}
 
-    private int spareBonus(int frameIndex) {
-        return rolls[frameIndex + 2];
-    }
+	private int spareBonus(int indexlancer) {
+		return lancers[indexlancer + 2];
+	}
 
-    private int sumOfPinsInFrame(int frameIndex) {
-        return rolls[frameIndex] + rolls[frameIndex + 1];
-    }
+	private int sumOfPinsInFrame(int indexlancer) {
+		return lancers[indexlancer] + lancers[indexlancer + 1];
+	}
 }
