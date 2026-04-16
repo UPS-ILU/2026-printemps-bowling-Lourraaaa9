@@ -1,7 +1,7 @@
 package tdd;
 
 public class Game {
-    private int[] rolls = new int[21]; // Max possible rolls in a game
+    private int[] rolls = new int[21];
     private int currentRoll = 0;
 
     public void roll(int pins) {
